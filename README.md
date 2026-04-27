@@ -50,7 +50,7 @@ This project is meticulously optimized for:
 
 ## 📄 License & Privacy
 
-- **Privacy Policy**: [Read here](https://whatstack.vercel.app/privacy)
+- **Privacy Policy**: [Read here](https://whatstack.brilworks.com/privacy)
 - **License**: MIT
 
 ---

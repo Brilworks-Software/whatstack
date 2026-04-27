@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://stacksnap.vercel.app/sitemap.xml
+Sitemap: https://whatstack.brilworks.com/sitemap.xml
