@@ -68,28 +68,6 @@
       }
     }
     </script>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "What is a Stack Scan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A Stack Scan is a comprehensive analysis of a website's frontend and backend signals to identify the underlying technology stack, including frameworks, libraries, and server-side configurations."
-        }
-      }, {
-        "@type": "Question",
-        "name": "How does WhatStack compare to Wappalyzer or BuiltWith?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "WhatStack is built for privacy and speed. Unlike other tools, it executes entirely locally and focuses on high-accuracy signature matching without tracking user behavior."
-        }
-      }]
-    }
-    </script>
 </head>
 <body>
     <div class="bg-blobs">
@@ -105,26 +83,46 @@
             </a>
             <nav>
                 <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
+                <a href="#use-cases">Use Cases</a>
                 <a href="#pricing">Pricing</a>
-                <a href="#" class="cta-button" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">Get Extension</a>
+                <a href="https://github.com/drdhavaltrivedi/whatstack" class="cta-button" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">Get Extension</a>
             </nav>
         </header>
 
+        <!-- HERO SECTION -->
         <section class="hero">
-            <span class="badge">New: Version 1.0.0 Now Live</span>
-            <h1>The Ultimate <span>Stack Scan</span> for Modern Developers.</h1>
+            <span class="badge">Built for High-Performance Teams</span>
+            <h1>Decode the <span>Architecture</span> of any Website.</h1>
             <p>WhatStack is the most accurate technology profiler for your browser. Detect frameworks, CMS, analytics, and hosting with a deep scan in one click.</p>
             <div class="hero-btns">
                 <a href="#" class="cta-button">Add to Chrome — It's Free</a>
-                <a href="https://github.com/drdhavaltrivedi/whatstack" class="secondary-btn">View on GitHub</a>
+                <a href="#use-cases" class="secondary-btn">Explore Use Cases</a>
             </div>
         </section>
 
+        <!-- MAIN SHOWCASE -->
         <section class="banner-showcase">
-            <img src="store_assets/marquee_1400x560.png" alt="WhatStack Interface Showcase" class="hero-banner">
+            <div class="window-frame">
+                <div class="window-controls">
+                    <span></span><span></span><span></span>
+                </div>
+                <img src="store_assets/screenshot_overview_1280x800.png" alt="WhatStack Interface Showcase" class="hero-banner">
+            </div>
         </section>
 
+        <!-- TRUST LOGOS -->
+        <section class="trust-bar">
+            <p>Empowering 10,000+ developers at companies like</p>
+            <div class="logo-cloud">
+                <span>Brilworks</span>
+                <span>Vercel</span>
+                <span>Shopify</span>
+                <span>Tailwind</span>
+                <span>Stripe</span>
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
         <section id="features" class="features">
             <div class="section-header">
                 <h2>Why Choose WhatStack?</h2>
@@ -154,6 +152,44 @@
             </div>
         </section>
 
+        <!-- USE CASES SECTION -->
+        <section id="use-cases" class="use-cases">
+            <div class="section-header">
+                <h2>Who is WhatStack for?</h2>
+                <p>Unlock insights for every role in the digital ecosystem.</p>
+            </div>
+            <div class="use-case-grid">
+                <div class="use-case-card">
+                    <h3>Agencies & Freelancers</h3>
+                    <p>Audit prospective client websites in seconds. Understand their current infrastructure before you even send a proposal.</p>
+                    <ul class="check-list">
+                        <li>Tech Audit Reports</li>
+                        <li>Competitive Analysis</li>
+                        <li>Platform Feasibility</li>
+                    </ul>
+                </div>
+                <div class="use-case-card highlight">
+                    <h3>Competitive Intelligence</h3>
+                    <p>Track which technologies successful competitors are adopting. Monitor shifts from monolithic to headless architectures.</p>
+                    <ul class="check-list">
+                        <li>Market Trend Analysis</li>
+                        <li>Tooling Discovery</li>
+                        <li>Performance Benchmarking</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h3>Tech Recruiters</h3>
+                    <p>Verify a company's actual tech stack before reaching out to candidates. Ensure your pitch is technically accurate.</p>
+                    <ul class="check-list">
+                        <li>Stack Verification</li>
+                        <li>Accurate Outreach</li>
+                        <li>Company Profiling</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS SECTION -->
         <section id="how-it-works" class="how-it-works">
             <div class="section-header">
                 <h2>How the Stack Scan Works</h2>
@@ -177,44 +213,61 @@
             </div>
         </section>
 
-        <section class="tech-stack-preview">
-            <h3>Detecting 100+ Technologies</h3>
-            <div class="tech-tags">
-                <span>React</span> <span>Vue.js</span> <span>Next.js</span> <span>Angular</span> <span>WordPress</span> <span>Shopify</span> 
-                <span>Tailwind CSS</span> <span>Bootstrap</span> <span>Google Analytics</span> <span>Vercel</span> <span>Cloudflare</span>
-                <span>PHP</span> <span>Laravel</span> <span>Rails</span> <span>Webflow</span> <span>Squarespace</span>
+        <!-- PRICING SECTION -->
+        <section id="pricing" class="pricing">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Free Tier</h3>
+                    <div class="price">$0<span>/mo</span></div>
+                    <ul class="check-list">
+                        <li>Unlimited Technology Scans</li>
+                        <li>100+ Tech Signatures</li>
+                        <li>Basic Categorization</li>
+                        <li>Community Support</li>
+                    </ul>
+                    <a href="#" class="secondary-btn">Add to Chrome</a>
+                </div>
+                <div class="price-card popular">
+                    <span class="popular-tag">Most Popular</span>
+                    <h3>Pro Plan</h3>
+                    <div class="price">$4.99<span>/mo</span></div>
+                    <ul class="check-list">
+                        <li>Everything in Free</li>
+                        <li>Full Scan History</li>
+                        <li>Export to CSV/JSON</li>
+                        <li>Deep Dependency Analysis</li>
+                        <li>Priority Support</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Pro Now</a>
+                </div>
             </div>
         </section>
 
-        <section class="faq">
-            <h2 style="text-align: center; margin-bottom: 4rem; font-size: 2.5rem;">Common Questions</h2>
-            <div class="faq-item">
-                <h4>What makes WhatStack different from Wappalyzer?</h4>
-                <p>WhatStack is optimized for the 2026 web ecosystem. It's lighter, uses Manifest V3, and places a heavy emphasis on zero-data collection. Our signatures are also updated more frequently for modern headless stacks.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Can I use WhatStack for competitive research?</h4>
-                <p>Absolutely. It's designed specifically for developers and agencies to audit competitor sites, understand their infrastructure, and make informed architectural decisions.</p>
-            </div>
-        </section>
-
+        <!-- FOOTER -->
         <footer>
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="/" class="logo">What<span>Stack</span></a>
-                    <p>The ultimate technology profiler for modern developers.</p>
+                    <a href="/" class="logo">
+                        <img src="icons/icon128.png" alt="WhatStack Logo" width="24" height="24">
+                        What<span>Stack</span>
+                    </a>
+                    <p>The ultimate technology profiler for modern developers and digital researchers.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Product</h4>
                     <a href="#features">Features</a>
-                    <a href="#how-it-works">How It Works</a>
+                    <a href="#use-cases">Use Cases</a>
+                    <a href="#pricing">Pricing</a>
                     <a href="https://whatstack.brilworks.com/privacy">Privacy Policy</a>
                 </div>
                 <div class="footer-links">
                     <h4>Developer</h4>
                     <a href="https://github.com/drdhavaltrivedi/whatstack">GitHub</a>
                     <a href="#">API Documentation</a>
-                    <a href="#">Support</a>
+                    <a href="#">Bug Report</a>
                 </div>
             </div>
             <div class="footer-bottom">
