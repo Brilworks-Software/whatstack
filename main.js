@@ -58,7 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ name, email }),
+                    body: JSON.stringify({ 
+                        name, 
+                        email,
+                        referrer: document.referrer || 'Direct',
+                        currentUrl: window.location.href
+                    }),
                 });
 
                 if (response.ok) {
