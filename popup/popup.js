@@ -101,8 +101,12 @@ async function init() {
   }
 
   document.getElementById('refreshBtn').addEventListener('click', async () => {
-    await chrome.storage.local.remove([domKey, hdrKey]);
-    window.location.reload();
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (tab) {
+      await chrome.storage.local.remove([domKey, hdrKey]);
+      chrome.tabs.reload(tab.id);
+      window.close(); // Close popup so the user sees the page reloading
+    }
   });
 
   document.getElementById('copyBtn').addEventListener('click', () => {
