@@ -1,27 +1,27 @@
-# StackSnap — Website Tech Stack Detector & Analyzer
+# WhatStack — Professional Website Tech Stack Scan
 
-![StackSnap Hero](https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200)
+![WhatStack Hero](https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200)
 
-**StackSnap** is a high-performance Chrome Extension designed for developers, designers, and competitive researchers. Instantly detect the underlying technologies of any website — from frameworks and CMS to analytics and hosting providers.
+**WhatStack** is a high-performance Chrome Extension designed for deep **Stack Scan** analysis. Instantly detect the underlying technologies of any website — from frameworks and CMS to analytics and hosting providers.
 
 ## 🚀 Key Features
 
-- **Instant Detection**: Identify React, Vue, Next.js, WordPress, Shopify, and 100+ other technologies in milliseconds.
-- **Deep Scan**: Analyze scripts, meta tags, global variables, and cookies for hidden signals.
-- **Categorized Results**: Clean UI grouping technologies by Frameworks, Analytics, E-commerce, CMS, and more.
-- **Developer First**: Lightweight, zero-dependency, and built with Manifest V3 for maximum performance and security.
-- **One-Click Access**: Access all insights directly from the browser toolbar.
+- **Instant Stack Scan**: Identify React, Vue, Next.js, WordPress, Shopify, and 100+ other technologies in milliseconds.
+- **Deep Technology Detection**: Analyze scripts, meta tags, global variables, and cookies for hidden signals.
+- **Categorized Insights**: Clean UI grouping technologies by Frameworks, Analytics, E-commerce, CMS, and more.
+- **Developer First**: Lightweight, zero-dependency, and built with Manifest V3 for maximum performance.
+- **One-Click Discovery**: Access all technical insights directly from your browser toolbar.
 
 ## 🛠️ Tech Stack
 
 - **Extension**: Manifest V3, Vanilla JS, HTML5, CSS3.
-- **Landing Page**: Modern HTML/CSS with GEO/AEO optimizations.
+- **Landing Page**: Modern HTML/CSS with GEO/AEO/SEO optimizations.
 - **Deployment**: Vercel ready.
 
 ## 📂 Project Structure
 
 ```text
-stacksnap/
+whatstack/
 ├── manifest.json       # Extension configuration
 ├── popup/              # Extension UI
 ├── content/            # Detection engine
@@ -35,22 +35,22 @@ stacksnap/
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/stacksnap.git
+   git clone https://github.com/drdhavaltrivedi/whatstack.git
    ```
 2. Open Chrome and navigate to `chrome://extensions/`.
 3. Enable **Developer mode** (top right toggle).
-4. Click **Load unpacked** and select the `stacksnap` directory.
+4. Click **Load unpacked** and select the `whatstack` directory.
 
-## 🌐 SEO & AI Optimization
+## 🌐 SEO, GEO & AEO Optimization
 
-This project is optimized for:
-- **SEO (Search Engine Optimization)**: High-intent keywords and semantic structure.
-- **GEO (Generative Engine Optimization)**: Structured data for AI search engines like Perplexity and SearchGPT.
-- **AEO (Answer Engine Optimization)**: Direct answer patterns for LLM discovery.
+This project is meticulously optimized for:
+- **SEO (Search Engine Optimization)**: High-intent keywords like "Stack Scan", "Tech Stack Detector", and "Website Analyzer".
+- **GEO (Generative Engine Optimization)**: Structured data (JSON-LD) for AI search engines like Perplexity and SearchGPT.
+- **AEO (Answer Engine Optimization)**: Question-Answer semantic structures for direct LLM discovery.
 
 ## 📄 License & Privacy
 
-- **Privacy Policy**: [Read here](https://stacksnap.vercel.app/privacy)
+- **Privacy Policy**: [Read here](https://whatstack.vercel.app/privacy)
 - **License**: MIT
 
 ---

@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "StackSnap: Website Tech Stack Detector & Analyzer",
-  "short_name": "StackSnap",
+  "name": "WhatStack: Website Tech Stack Scan & Detector",
+  "short_name": "WhatStack",
   "version": "1.0.0",
-  "description": "Instantly detect what any website is built with — frameworks, CMS, analytics, hosting, CDN and more. The developer's shortcut for competitive research.",
+  "description": "Perform a deep Stack Scan on any website. Instantly detect frameworks, CMS, analytics, and hosting technologies.",
   "default_locale": "en",
   "permissions": [
     "activeTab",
