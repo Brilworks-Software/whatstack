@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    formMessage.textContent = 'Success! We will be in touch soon. 🚀';
+                    formMessage.textContent = 'Success! We will be in touch soon.';
                     formMessage.className = 'form-message success';
                     proForm.reset();
                     

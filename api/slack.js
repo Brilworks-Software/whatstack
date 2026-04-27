@@ -24,7 +24,7 @@ export default async function handler(req, res) {
   }
 
   const messageText = [
-    `*New WhatStack Pro Lead* 🚀`,
+    `*New WhatStack Pro Lead*`,
     `*Name:* ${name}`,
     `*Email:* ${email}`,
     ``,
