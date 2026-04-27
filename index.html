@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO: Primary Meta Tags -->
+    <title>StackSnap — Detect Website Tech Stack & Frameworks Instantly</title>
+    <meta name="title" content="StackSnap — Detect Website Tech Stack & Frameworks Instantly">
+    <meta name="description" content="Instantly identify React, Vue, Next.js, WordPress, and 100+ other technologies with StackSnap. The developer's premium tool for tech stack analysis.">
+    <meta name="keywords" content="tech stack detector, website analyzer, framework detector, chrome extension, developer tools, StackSnap, CMS detector, analytics analyzer">
+    <meta name="author" content="Brilworks">
+    
+    <!-- GEO/AEO: Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stacksnap.vercel.app/">
+    <meta property="og:title" content="StackSnap — Detect Website Tech Stack Instantly">
+    <meta property="og:description" content="Discover the DNA of any website. Identify frameworks, libraries, and hosting in one click.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200">
+
+    <!-- GEO/AEO: Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://stacksnap.vercel.app/">
+    <meta property="twitter:title" content="StackSnap — Detect Website Tech Stack Instantly">
+    <meta property="twitter:description" content="Discover the DNA of any website. Identify frameworks, libraries, and hosting in one click.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- GEO/AEO: Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "StackSnap",
+      "operatingSystem": "ChromeOS, Windows, macOS, Linux",
+      "applicationCategory": "DeveloperApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Instantly detect what any website is built with — frameworks, CMS, analytics, hosting, CDN and more.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "1250"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What is StackSnap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "StackSnap is a professional Chrome extension that allows developers and researchers to instantly identify the technology stack of any website, including frameworks, CMS, analytics, and more."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How does StackSnap detect technologies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "StackSnap uses a sophisticated engine to analyze global variables, script sources, meta tags, and cookies to identify fingerprints of over 100+ different technologies."
+        }
+      }]
+    }
+    </script>
+</head>
+<body>
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="8" fill="url(#grad)" />
+                    <path d="M16 8L8 16L16 24L24 16L16 8Z" fill="white" />
+                    <defs>
+                        <linearGradient id="grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#38bdf8" />
+                            <stop offset="1" stop-color="#818cf8" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                Stack<span>Snap</span>
+            </a>
+            <nav>
+                <a href="#features" style="color: var(--text-muted); text-decoration: none; font-weight: 500;">Features</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>Understand any website's <span>DNA</span> in seconds.</h1>
+            <p>StackSnap is the most accurate technology profiler for your browser. Detect frameworks, CMS, analytics, and hosting with zero friction.</p>
+            <a href="#" class="cta-button">Add to Chrome — It's Free</a>
+        </section>
+
+        <section id="features" class="features">
+            <div class="feature-card">
+                <h3>100+ Signatures</h3>
+                <p>From mainstream frameworks like React and Vue to niche CMS platforms, we've got you covered.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Deep Analysis</h3>
+                <p>We look beyond meta tags. Our engine analyzes global variables and network requests for hidden insights.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Privacy First</h3>
+                <p>Detection happens entirely on your machine. We never track your browsing history or collect personal data.</p>
+            </div>
+        </section>
+
+        <section class="showcase">
+            <div class="showcase-window">
+                <div class="window-header">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <div style="text-align: left; padding: 1rem; font-family: monospace;">
+                    <div style="color: var(--primary); margin-bottom: 0.5rem;">> Scan Complete: example.com</div>
+                    <div style="margin-left: 1rem;">
+                        <p style="color: #fff;">💎 Framework: Next.js</p>
+                        <p style="color: #fff;">📊 Analytics: Google Analytics 4</p>
+                        <p style="color: #fff;">🎨 CSS: Tailwind CSS</p>
+                        <p style="color: #fff;">▲ Hosting: Vercel</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <h2 style="text-align: center; margin-bottom: 4rem; font-size: 2.5rem;">Common Questions</h2>
+            <div class="faq-item">
+                <h4>What makes StackSnap different?</h4>
+                <p>Unlike other detectors, StackSnap is built for speed and privacy. It runs entirely client-side and uses a highly optimized signature matching engine that doesn't slow down your browser.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is it free to use?</h4>
+                <p>Yes, the core detection features are completely free. We offer a Pro version for advanced users who need scan history and export capabilities.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 StackSnap by Brilworks. All rights reserved.</p>
+            <div style="margin-top: 1rem;">
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="https://github.com/brilworks/stacksnap">GitHub</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# StackSnap: Tech Stack Detector
+
+StackSnap is a professional Chrome extension for detecting website technologies.
+
+## Features
+- Detects 100+ technologies (React, Vue, WordPress, Shopify, etc.)
+- Categorized analysis: Frameworks, Analytics, CMS, Hosting.
+- Local execution for privacy.
+- Lightweight and fast.
+
+## Links
+- Homepage: https://stacksnap.vercel.app
+- Privacy Policy: https://stacksnap.vercel.app/privacy
+- Chrome Web Store: [Pending]
+
+## Technical
+- Built with Manifest V3.
+- Vanilla JavaScript core.
+- No external tracking.
