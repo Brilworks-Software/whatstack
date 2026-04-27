@@ -9,11 +9,11 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Name and email are required' });
   }
 
-  // Extract Vercel Geolocation & IP Headers
-  const ip = req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || 'Unknown IP';
-  const city = req.headers['x-vercel-ip-city'] || 'Unknown City';
+  // Extract Geolocation & IP Headers (Prioritize Cloudflare, then Vercel)
+  const ip = req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || 'Unknown IP';
+  const city = req.headers['cf-ipcity'] || req.headers['x-vercel-ip-city'] || 'Unknown City';
   const region = req.headers['x-vercel-ip-country-region'] || 'Unknown Region';
-  const country = req.headers['x-vercel-ip-country'] || 'Unknown Country';
+  const country = req.headers['cf-ipcountry'] || req.headers['x-vercel-ip-country'] || 'Unknown Country';
 
   const SLACK_TOKEN = process.env.SLACK_TOKEN;
   const SLACK_CHANNEL_ID = process.env.SLACK_CHANNEL_ID || 'C0A4U132203';
