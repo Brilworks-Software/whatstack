@@ -34,15 +34,14 @@ let currentResults = [];
 let activeFilter   = 'all';
 let searchQuery    = '';
 
-// Merge DOM-detected + header-detected results, deduplicating by name.
-// Header hits that duplicate a DOM hit upgrade confidence to 'confirmed'.
 function mergeResults(domResults, hdrResults) {
-  const merged = [...domResults];
+  const merged = [...(domResults || [])];
   const byName = new Map(merged.map(r => [r.name, r]));
 
-  for (const h of hdrResults) {
+  for (const h of (hdrResults || [])) {
     if (byName.has(h.name)) {
       byName.get(h.name).confidence = 'confirmed';
+      byName.get(h.name).fromHeaders = true; // Mark as also found in headers
     } else {
       merged.push(h);
       byName.set(h.name, h);
@@ -71,47 +70,50 @@ async function init() {
 
   const hostname = new URL(tab.url).hostname;
   document.getElementById('siteUrl').textContent = hostname;
-  showState('scanning');
-
+  
   const domKey = `stacksnap_${hostname}`;
   const hdrKey = `stacksnap_hdrs_${hostname}`;
 
   let { dom, hdr } = await loadMerged(domKey, hdrKey);
 
-  if (dom !== null) {
+  // If we have ANY data (DOM or HDR), show it immediately
+  if (dom !== null || hdr.length > 0) {
     showResults(mergeResults(dom, hdr));
   } else {
-    // Content script hasn't run yet — inject and wait
-    try {
-      await chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ['data/signatures.js', 'content/detector.js']
-      });
-      await pollForResult(domKey, 2500);
-      ({ dom, hdr } = await loadMerged(domKey, hdrKey));
-      showResults(mergeResults(dom ?? [], hdr));
-    } catch (e) {
-      // Can't inject (restricted page) — show header results if we have any
-      if (hdr.length > 0) {
-        showResults(hdr);
-      } else {
-        showState('error');
-      }
-    }
+    showState('scanning');
   }
 
+  // Always trigger a re-scan request to ensure fresh data
+  try {
+    // 1. Tell existing content script to re-scan
+    chrome.tabs.sendMessage(tab.id, { type: 'STACKSNAP_RESCAN' }).catch(() => {
+        // 2. If no script is there, inject it
+        return chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            files: ['data/signatures.js', 'content/detector.js']
+        });
+    });
+
+    // Wait and update if new results come in
+    await pollForResult(domKey, 3000);
+    const updated = await loadMerged(domKey, hdrKey);
+    showResults(mergeResults(updated.dom, updated.hdr));
+  } catch (e) {
+    if (currentResults.length === 0) showState('error');
+  }
+
+  // ─── Listeners ─────────────────────────────────────────────────────────────
+  
   document.getElementById('refreshBtn').addEventListener('click', async () => {
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    if (tab) {
+    const [t] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (t) {
       await chrome.storage.local.remove([domKey, hdrKey]);
-      chrome.tabs.reload(tab.id);
-      window.close(); // Close popup so the user sees the page reloading
+      chrome.tabs.reload(t.id);
+      window.close();
     }
   });
 
-  document.getElementById('copyBtn').addEventListener('click', () => {
-    copyAsMarkdown();
-  });
+  document.getElementById('copyBtn').addEventListener('click', () => copyAsMarkdown());
 
   document.getElementById('searchInput').addEventListener('input', (e) => {
     searchQuery = e.target.value.toLowerCase().trim();
@@ -129,7 +131,7 @@ function pollForResult(key, timeout) {
         clearInterval(interval);
         resolve();
       }
-    }, 150);
+    }, 200);
   });
 }
 
@@ -137,30 +139,13 @@ function showResults(detected) {
   currentResults = detected || [];
 
   if (!currentResults.length) {
-    showState('empty');
+    // If we're still waiting (it's very early), don't show empty yet
     return;
   }
 
   showState('results');
-  renderSummaryBar();
   renderFilterTabs();
   renderList();
-}
-
-function renderSummaryBar() {
-  const bar = document.getElementById('summaryBar');
-  const byCat = {};
-  for (const item of currentResults) {
-    byCat[item.category] = (byCat[item.category] || 0) + 1;
-  }
-  bar.innerHTML = Object.entries(byCat)
-    .sort(([a], [b]) => CATEGORY_ORDER.indexOf(a) - CATEGORY_ORDER.indexOf(b))
-    .map(([cat, count]) => `
-      <div class="summary-chip">
-        <span>${CATEGORY_LABELS[cat] || cat}</span>
-        <span class="count">${count}</span>
-      </div>
-    `).join('');
 }
 
 function getFiltered() {
@@ -183,10 +168,7 @@ function renderFilterTabs() {
 
   tabs.innerHTML = '';
 
-  const allCount = searchQuery
-    ? filtered.length
-    : currentResults.length;
-
+  const allCount = searchQuery ? filtered.length : currentResults.length;
   const allTab = document.createElement('button');
   allTab.className = `filter-tab ${activeFilter === 'all' ? 'active' : ''}`;
   allTab.textContent = `All (${allCount})`;
@@ -229,12 +211,8 @@ function renderList() {
   list.innerHTML = sortedCats.map(cat => `
     <div class="category-header">${CATEGORY_LABELS[cat] || cat}</div>
     ${grouped[cat].map(item => {
-      const verTag = item.version
-        ? `<span class="version-tag">v${item.version}</span>`
-        : '';
-      const srcBadge = item.fromHeaders
-        ? `<span class="source-badge" title="Detected from HTTP response headers">HDR</span>`
-        : '';
+      const verTag = item.version ? `<span class="version-tag">v${item.version}</span>` : '';
+      const srcBadge = item.fromHeaders ? `<span class="source-badge" title="Detected from HTTP response headers">HDR</span>` : '';
       const conf = item.confidence || 'possible';
       return `
         <div class="result-item">
@@ -249,13 +227,9 @@ function renderList() {
           </div>
           <div class="result-meta">
             <span class="confidence-dot ${conf}" title="${CONFIDENCE_LABELS[conf] || conf}"></span>
-            <a class="result-link" href="${item.website}" target="_blank" title="Visit ${escapeHtml(item.name)}">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                <polyline points="15 3 21 3 21 9"/>
-                <line x1="10" y1="14" x2="21" y2="3"/>
-              </svg>
-            </a>
+            <a class="result-link" href="${item.website}" target="_blank">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
           </div>
         </div>
       `;
@@ -264,18 +238,13 @@ function renderList() {
 }
 
 function copyAsMarkdown() {
-  const lines = ['# Tech Stack', ''];
+  const lines = [`# Tech Stack for ${document.getElementById('siteUrl').textContent}`, ''];
   const byCat = {};
-
   for (const r of currentResults) {
     if (!byCat[r.category]) byCat[r.category] = [];
     byCat[r.category].push(r);
   }
-
-  const sortedCats = Object.keys(byCat).sort(
-    (a, b) => CATEGORY_ORDER.indexOf(a) - CATEGORY_ORDER.indexOf(b)
-  );
-
+  const sortedCats = Object.keys(byCat).sort((a, b) => CATEGORY_ORDER.indexOf(a) - CATEGORY_ORDER.indexOf(b));
   for (const cat of sortedCats) {
     lines.push(`### ${CATEGORY_LABELS[cat] || cat}`);
     for (const r of byCat[cat]) {
@@ -285,9 +254,8 @@ function copyAsMarkdown() {
     }
     lines.push('');
   }
-
   navigator.clipboard.writeText(lines.join('\n'));
-  showToast('Copied as Markdown');
+  showToast('Copied to clipboard');
 }
 
 function showState(state) {
@@ -310,11 +278,7 @@ function showToast(msg) {
 }
 
 function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 init();

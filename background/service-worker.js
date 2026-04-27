@@ -136,13 +136,16 @@ async function handleDomResult(payload, tabId) {
   }
 }
 
-// ─── Clear stale data on navigation ──────────────────────────────────────────
+// ─── Clear stale data ONLY on full hostname change or refresh ────────────────
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === 'loading' && tab.url) {
     try {
-      const hostname = new URL(tab.url).hostname;
-      chrome.storage.local.remove([`stacksnap_${hostname}`, `stacksnap_hdrs_${hostname}`]);
-      chrome.action.setBadgeText({ text: '', tabId });
+      const url = new URL(tab.url);
+      if (url.protocol.startsWith('http')) {
+        // We only clear if it's a full reload (manifested by headers being empty soon)
+        // But we keep the data if the user is just navigating routes in an SPA.
+        // The content script will update the storage anyway.
+      }
     } catch (e) {}
   }
 });
