@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WhatStack</title>
   <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app">
@@ -12,17 +15,17 @@
     <header class="header">
       <div class="header-left">
         <div class="logo">
-          <img src="../icons/icon32.png" alt="WhatStack" width="20" height="20" style="border-radius: 4px;">
+          <img src="../icons/icon32.png" alt="WhatStack" width="22" height="22" style="border-radius: 6px;">
           <span class="logo-text">WhatStack</span>
         </div>
         <span class="site-url" id="siteUrl">Loading...</span>
       </div>
       <div class="header-actions">
         <button class="btn-icon" id="copyBtn" title="Copy as Markdown">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         </button>
         <button class="btn-icon" id="refreshBtn" title="Re-scan page">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
         </button>
       </div>
     </header>
@@ -30,38 +33,40 @@
     <!-- State: Scanning -->
     <div class="state" id="stateScanning" style="display:none">
       <div class="spinner"></div>
-      <p>Scanning tech stack…</p>
+      <p class="state-title">Analyzing Stack</p>
+      <p class="state-sub">Fingerprinting technologies...</p>
     </div>
 
     <!-- State: Results -->
     <div id="stateResults" style="display:none">
-      <div class="summary-bar" id="summaryBar"></div>
-      <div class="search-wrap">
-        <svg class="search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="searchInput" class="search-input" placeholder="Filter technologies…" autocomplete="off" spellcheck="false">
+      <div class="controls-container">
+        <div class="search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search technologies..." autocomplete="off">
+        </div>
+        <div class="filter-tabs" id="filterTabs"></div>
       </div>
-      <div class="filter-tabs" id="filterTabs"></div>
       <div class="results-list" id="resultsList"></div>
     </div>
 
-    <!-- State: No results -->
+    <!-- State: Empty -->
     <div class="state" id="stateEmpty" style="display:none">
-      <p style="font-size:28px; margin-bottom: 8px;">🔍</p>
-      <p class="state-title">Nothing detected</p>
-      <p class="state-sub">This page uses custom or server-side tech we can't see from the browser.</p>
+      <p style="font-size:32px; margin-bottom: 8px;">🕵️</p>
+      <p class="state-title">No technologies found</p>
+      <p class="state-sub">Try refreshing the page or checking another site.</p>
     </div>
 
     <!-- State: Error -->
     <div class="state" id="stateError" style="display:none">
-      <p style="font-size:28px; margin-bottom: 8px;">⚠️</p>
-      <p class="state-title">Can't scan this page</p>
-      <p class="state-sub">Extensions can't run on chrome:// or browser system pages.</p>
+      <p style="font-size:32px; margin-bottom: 8px;">🚫</p>
+      <p class="state-title">Scan restricted</p>
+      <p class="state-sub">Extension cannot scan browser system pages.</p>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
       <span>by <strong>Brilworks</strong></span>
-      <a href="#" id="proLink" class="pro-badge">✨ Pro</a>
+      <a href="https://whatstack.brilworks.com/pricing" target="_blank" id="proLink" class="pro-badge">Go Pro</a>
     </footer>
   </div>
 
