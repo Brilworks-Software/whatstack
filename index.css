@@ -338,42 +338,68 @@ nav a:hover { color: var(--primary); }
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--accent-gradient);
+    background: radial-gradient(circle at top left, var(--primary-glow), transparent 70%);
     opacity: 0;
     transition: opacity 0.5s;
-    z-index: -1;
+    pointer-events: none;
 }
 
 .feature-card:hover {
-    transform: translateY(-12px);
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-12px) scale(1.02);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+}
+
+.feature-card:hover::before { opacity: 1; }
+
+.feature-badge {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: var(--primary);
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .feature-card .icon {
     width: 64px;
     height: 64px;
-    background: rgba(56, 189, 248, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
     margin-bottom: 2rem;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.feature-card:hover .icon { transform: scale(1.1) rotate(5deg); }
+.feature-card:hover .icon { 
+    transform: scale(1.1) rotate(5deg); 
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 0 20px var(--primary-glow);
+}
 
 .feature-card h3, .use-case-card h3 {
-    font-size: 1.75rem;
+    font-size: 1.85rem;
     margin-bottom: 1.25rem;
-    font-weight: 700;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
 }
 
 .feature-card p, .use-case-card p {
     color: var(--text-muted);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    line-height: 1.6;
 }
 
 /* Use Cases Highlight */
