@@ -12,6 +12,40 @@
 - **Privacy First**: All detection logic runs locally on your device with zero data collection or tracking.
 - **Developer-Focused**: Built with Manifest V3 for maximum performance and zero impact on browser speed.
 
+## 🧠 How it Works
+
+WhatStack uses a dual-engine approach to ensure maximum detection accuracy:
+
+1.  **Passive Header Analysis**: The background service worker listens to HTTP response headers (e.g., `X-Powered-By`, `Server`) to identify server-side infrastructure.
+2.  **Active DOM Scanning**: The content script analyzes global JavaScript variables, script source patterns, and meta tags to identify client-side libraries and frameworks.
+
+### 🏗️ Architecture Diagram
+
+```mermaid
+graph TD
+    A[User visits Website] --> B[Background Script]
+    B -->|onHeadersReceived| C[Header Detection]
+    C -->|Store results| D[(chrome.storage.local)]
+    
+    A --> E[Content Script]
+    E -->|DOM Scanning| F[Signature Matching]
+    F -->|Message: STACKSNAP_RESULT| B
+    B -->|Merge Data| D
+    B -->|Update Badge| G[Extension Icon]
+    
+    H[User clicks Popup] --> I[Popup Script]
+    I -->|Fetch data| D
+    I -->|Render UI| J[WhatStack Dashboard]
+```
+
+## 🛤️ User Flow
+
+1.  **Install**: Load the extension into Chrome/Brave/Edge.
+2.  **Browse**: Visit any website you're curious about.
+3.  **Observe**: Look at the extension icon; it will show a badge count of detected technologies.
+4.  **Analyze**: Click the icon to open the **WhatStack Dashboard** for a detailed breakdown.
+5.  **Research**: Click on technology links to learn more about the stack.
+
 ## 🛠️ Tech Stack
 
 - **Extension**: Manifest V3, Vanilla JS, HTML5, CSS3.
@@ -47,6 +81,18 @@ This project is meticulously optimized for:
 - **SEO (Search Engine Optimization)**: High-intent keywords like "Stack Scan", "Tech Stack Detector", and "Website Analyzer".
 - **GEO (Generative Engine Optimization)**: Structured data (JSON-LD) for AI search engines like Perplexity and SearchGPT.
 - **AEO (Answer Engine Optimization)**: Question-Answer semantic structures for direct LLM discovery.
+
+## 🗺️ Project Roadmap
+
+- [ ] **Pro Tier**: Historical scan tracking and export to CSV/JSON.
+- [ ] **Enhanced Signatures**: Support for 500+ technologies including niche headless CMS.
+- [ ] **Site Comparisons**: Benchmarking your tech stack against competitors.
+- [ ] **Browser Sync**: Sync your scan history across devices.
+
+## 👨‍💻 Developer
+Developed with ❤️ by [Dr. Dhaval Trivedi](https://drdhaval.in)
+
+🔗 **GitHub Profile:** [drdhavaltrivedi](https://github.com/drdhavaltrivedi)
 
 ## 📄 License & Privacy
 
