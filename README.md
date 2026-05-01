@@ -1,4 +1,4 @@
-# WhatStack — Professional Website Tech Stack Scan
+# WhatStack — Professional Website Technology Profiler
 
 ![WhatStack Hero](https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200)
 
@@ -6,11 +6,11 @@
 
 ## 🚀 Key Features
 
-- **Instant Stack Scan**: Identify React, Vue, Next.js, WordPress, Shopify, and 100+ other technologies in milliseconds.
-- **Deep Technology Detection**: Analyze scripts, meta tags, global variables, and cookies for hidden signals.
-- **Categorized Insights**: Clean UI grouping technologies by Frameworks, Analytics, E-commerce, CMS, and more.
-- **Developer First**: Lightweight, zero-dependency, and built with Manifest V3 for maximum performance.
-- **One-Click Discovery**: Access all technical insights directly from your browser toolbar.
+- **Instant Technology Detection**: Identify React, Vue, Next.js, WordPress, Shopify, and 100+ other technologies in milliseconds.
+- **Deep Signal Analysis**: Goes beyond simple fingerprinting by scanning HTTP response headers, global variables, and meta tags.
+- **Clean Categorized UI**: Technologies are grouped by category (Frameworks, E-commerce, Analytics, etc.) for easy reading.
+- **Privacy First**: All detection logic runs locally on your device with zero data collection or tracking.
+- **Developer-Focused**: Built with Manifest V3 for maximum performance and zero impact on browser speed.
 
 ## 🛠️ Tech Stack
 

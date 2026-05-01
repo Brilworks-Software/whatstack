@@ -3,7 +3,7 @@
   "name": "WhatStack: Website Tech Stack Scan & Detector",
   "short_name": "WhatStack",
   "version": "1.0.1",
-  "description": "Perform a deep Stack Scan on any website. Instantly detect frameworks, CMS, analytics, and hosting technologies.",
+  "description": "Unlock the DNA of any website with a deep Stack Scan. Instantly detect frameworks, CMS, analytics, and hosting in one click.",
   "default_locale": "en",
   "permissions": [
     "activeTab",
