@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "WhatStack: Website Tech Stack Scan & Detector",
   "short_name": "WhatStack",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Unlock the DNA of any website with a deep Stack Scan. Instantly detect frameworks, CMS, analytics, and hosting in one click.",
   "default_locale": "en",
   "permissions": [
@@ -23,7 +23,7 @@
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    "default_title": "StackSnap — Detect Tech Stack"
+    "default_title": "WhatStack — Detect Tech Stack"
   },
   "background": {
     "service_worker": "background/service-worker.js"
