@@ -4,6 +4,9 @@
 
 **WhatStack** is a high-performance Chrome Extension designed for deep **Stack Scan** analysis. Instantly detect the underlying technologies of any website — from frameworks and CMS to analytics and hosting providers.
 
+[![Install from Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-WhatStack-blue?logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/whatstack-website-tech-st/jjhagjfpflmoloejdpcchceacgofaahl?utm_source=website&utm_medium=homepage&utm_campaign=launch)
+
+
 ## 🚀 Key Features
 
 - **Instant Technology Detection**: Identify React, Vue, Next.js, WordPress, Shopify, and 100+ other technologies in milliseconds.
